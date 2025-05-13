@@ -71,7 +71,7 @@ def convert_reel_to_mp3():
         # Step 6: Return MP3 URL
         return jsonify({
             'status': 'success',
-            'mp3_url': request.host_url + 'temp/' + os.path.basename(mp3_path)
+            'mp3_url': request.host_url.replace('http://', 'https://') + 'temp/' + os.path.basename(mp3_path)
         })
 
     except Exception as e:
