@@ -10,7 +10,6 @@ import re
 app = Flask(__name__)
 
 TEMP_DIR = 'temp'
-BASE_URL = 'http://107.175.67.95:5001/temp/'
 
 os.makedirs(TEMP_DIR, exist_ok=True)
 
@@ -72,7 +71,7 @@ def convert_reel_to_mp3():
         # Step 6: Return MP3 URL
         return jsonify({
             'status': 'success',
-            'mp3_url': BASE_URL + os.path.basename(mp3_path)
+            'mp3_url': request.host_url + 'temp/' + os.path.basename(mp3_path)
         })
 
     except Exception as e:
